@@ -1,0 +1,22 @@
+@import '../../../../../variables'
+
+.left-menu-item
+  display: flex
+  justify-content: space-between
+  font-size: $font-size-sm
+  margin-bottom: $space-sm
+  padding: $space-xs $space-sm $space-xs
+  cursor: pointer
+
+  &:hover, &.selected
+    background-color: $dirty-white
+
+  [class^="gl-icon-"], [class*=" gl-icon-"]
+    font-size: $font-size-lg
+    width: $icon-width
+    text-align: center
+    margin-right: $space-sm
+
+  .glyphicon
+    font-size: $font-size-xs
+    color: $gray

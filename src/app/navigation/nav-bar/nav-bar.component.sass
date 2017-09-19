@@ -1,0 +1,28 @@
+@import '../../../variables'
+
+.nav-bar
+  display: flex
+  flex-direction: row
+  align-items: center
+  background-color: $primary-blue
+  height: 100%
+  font-size: $font-size-md
+  color: white
+
+  .nav-items
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    &.visible-xs
+      padding-left: $space-md
+
+    .glyphicon
+      top: 0
+
+    .nav-item
+      padding-right: $space-md
+      cursor: pointer
+
+      &:hover
+        color: $hover-bright

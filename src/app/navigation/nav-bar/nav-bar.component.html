@@ -1,0 +1,17 @@
+<div class="nav-bar">
+  <div class="container hidden-xs">
+    <nav class="nav-items">
+      <i class="glyphicon glyphicon-menu-hamburger nav-item"
+         (click)="toggleNavMenu()"></i>
+      <div *ngFor="let item of menuItems"
+           (click)="openNavigationElement(item)"
+           class="nav-item">
+        {{item.name}}
+      </div>
+    </nav>
+  </div>
+  <nav class="nav-items visible-xs">
+    <i class="glyphicon glyphicon-menu-hamburger nav-item"
+       (click)="toggleNavMenu()"></i>
+  </nav>
+</div>

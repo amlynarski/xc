@@ -1,0 +1,17 @@
+@import '../../../../variables'
+
+.close-nav-item
+  padding: $space-sm
+
+  .glyphicon
+    width: $icon-width
+    color: $gray
+    text-align: center
+    cursor: pointer
+
+    &:hover
+      color: $hover-dark
+
+@media (max-width: $screen-xs-max)
+  .nav-menu-left-container.short-menu
+    width: $short-menu-width

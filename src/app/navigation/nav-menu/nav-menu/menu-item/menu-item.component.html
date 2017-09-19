@@ -1,0 +1,11 @@
+<div class="left-menu-item"
+     [ngClass]="isSelected ? 'selected': ''"
+     (click)="selectElement()">
+  <div class="vertical-middle">
+    <i [class]="iconClassName"></i>
+    <span [ngClass]="isAnySelected ? 'hidden-xs' : ''">{{isSelected ? back : element.name}}</span>
+  </div>
+  <i class="glyphicon vertical-middle"
+     [ngClass]="isSelected ? 'glyphicon-triangle-left' : 'glyphicon-triangle-right'">
+  </i>
+</div>
