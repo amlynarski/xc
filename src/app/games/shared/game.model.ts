@@ -4,7 +4,7 @@ export class Game {
   name: string;
   rating: number;
   slug: string;
-  thumbnails: string;
+  thumbnail: string;
   background: string;
   label: string;
 } // and many useless properties ...

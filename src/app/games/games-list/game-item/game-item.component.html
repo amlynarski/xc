@@ -1,3 +1,10 @@
-<p>
-  game-item works!
-</p>
+<div class="game-box">
+  <div class="game-name">{{game.name}}</div>
+  <img class="game-img" [src]="game.thumbnail"  />
+  <div class="additional-game-info">
+    <div class="vertical-middle">
+      <i class="glyphicon glyphicon-star-empty"></i>
+      <span class="game-rating">{{game.rating}}</span>
+    </div>
+  </div>
+</div>

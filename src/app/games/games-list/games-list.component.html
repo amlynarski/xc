@@ -1,3 +1,5 @@
-<div *ngFor="let game of games$ | async">
-  {{game.name}}
+<div class="game-list">
+  <app-game-item *ngFor="let game of games$ | async"
+                 [game]="game">
+  </app-game-item>
 </div>

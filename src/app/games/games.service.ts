@@ -11,6 +11,9 @@ export class GamesService {
   constructor(private http: HttpClient) { }
 
   getCategories() {
+    // this.getsth()
+    //   .subscribe()
+
     return this.http
       .get(API_URL + CATEGORY_URL)
       .map((response: Response) => {
@@ -27,6 +30,14 @@ export class GamesService {
       })
       .catch(this.handleError);
   }
+
+  // getsth() {
+  //   return this.http
+  //     // .get('//staging-static.cherrycasino.com/media/game/desktop/lobby/150x140-starburst-new2.jpg?u=1487951589')
+  //     .get("//staging-static.cherrycasino.com/img/games/gamebg/starburst-1385396764.jpg?u=1487951589")
+  //     .map(response => response)
+  //
+  // }
 
   private handleError(error: Response) {
     console.log(error);

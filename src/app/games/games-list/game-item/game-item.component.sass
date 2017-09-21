@@ -1,0 +1,42 @@
+@import '../../../../variables'
+
+.game-box
+  display: flex
+  flex-direction: column
+  justify-content: center
+  width: 200px
+  background-color: $white
+  align-items: center
+  margin: 5px
+  padding: $space-md $space-md $space-sm $space-md
+  box-shadow: 1px 1px 2px 0 rgb(194, 182, 194)
+  border-radius: 2px
+  cursor: pointer
+
+  &:hover
+    box-shadow: 1px 1px 2px 0 rgb(116, 165, 194)
+    
+  .game-name
+    display: inline-block
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    width: 100%
+    text-align: center
+
+  .game-img
+    width: 150px
+    border-radius: 2px
+
+  .additional-game-info
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    margin-top: $space-xs
+    color: $gray
+
+    .glyphicon
+      top: 0
+    
+    // todo variables

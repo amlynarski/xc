@@ -1,5 +1,12 @@
-<div *ngFor="let category of categories"
-     (click)="selectCategory(category)">
-  {{category.name}}
+<div class="categories-bar">
+  <div class="container categories-list">
+    <app-category-item *ngFor="let category of categories"
+                       [category]="category"
+                       (click)="selectCategory(category)">
+    </app-category-item>
+  </div>
 </div>
-<router-outlet></router-outlet>
+<p></p>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
