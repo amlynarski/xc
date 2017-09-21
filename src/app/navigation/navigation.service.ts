@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http'; // check
 import { Observable } from 'rxjs/Observable';
 import { MenuItem } from './shared/menu-item.model';
 import { Subject } from 'rxjs/Subject';
@@ -19,19 +18,12 @@ export class NavigationService {
   constructor(private http: HttpClient, private router: Router) {
     this.isOpenStream = new Subject();
     this.selectedElementStream = new Subject();
-
-    this.getHttp()
-      .subscribe(
-        items => console.log(items)
-      );
   }
 
   getNavigationElements() {
     return this.http
       .get('assets/api/menu.json')
-      .map((response: Response) => {
-        return response;
-      })
+      .map(response => response)
       .catch(this.handleError);
   }
 
@@ -87,16 +79,6 @@ export class NavigationService {
   navigateTo(href: string) {
     this.router.navigate([href]);
     this.close();
-  }
-
-
-  getHttp() {
-    return this.http
-      .get('https://staging-frontapi.cherrytech.com/game-categories/popular-games')
-      .map((response: Response) => {
-        return response;
-      })
-      .catch(this.handleError)
   }
 
   private handleError(error: Response) {

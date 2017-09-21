@@ -1,0 +1,5 @@
+<div *ngFor="let category of categories"
+     (click)="selectCategory(category)">
+  {{category.name}}
+</div>
+<router-outlet></router-outlet>
