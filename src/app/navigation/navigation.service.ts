@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http'; // check
 import { Observable } from 'rxjs/Observable';
 import { MenuItem } from './shared/menu-item.model';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 const ICON_PREFIX = 'gl-icon-';
 const THUMB_PATH = '/assets/gl_task_images/';
@@ -15,16 +16,21 @@ export class NavigationService {
   private selectedElement: MenuItem | null;
   private selectedElementStream: Subject<MenuItem | null>;
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.isOpenStream = new Subject();
     this.selectedElementStream = new Subject();
+
+    this.getHttp()
+      .subscribe(
+        items => console.log(items)
+      );
   }
 
   getNavigationElements() {
     return this.http
       .get('assets/api/menu.json')
       .map((response: Response) => {
-        return <any[]>response.json();
+        return response;
       })
       .catch(this.handleError);
   }
@@ -81,6 +87,16 @@ export class NavigationService {
   navigateTo(href: string) {
     this.router.navigate([href]);
     this.close();
+  }
+
+
+  getHttp() {
+    return this.http
+      .get('https://staging-frontapi.cherrytech.com/game-categories/popular-games')
+      .map((response: Response) => {
+        return response;
+      })
+      .catch(this.handleError)
   }
 
   private handleError(error: Response) {
