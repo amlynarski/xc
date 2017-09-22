@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { GamesService } from './games/games.service';
 import { GamesModule } from './games/games.module';
 import { HttpCacheService } from './http/http-cache.service';
-import { XcSpinnerComponent } from './xc-components/xc-spinner/xc-spinner.component';
 
 @NgModule({
   imports: [
@@ -34,8 +33,7 @@ import { XcSpinnerComponent } from './xc-components/xc-spinner/xc-spinner.compon
   declarations: [
     AppComponent,
     MainPageComponent,
-    PageNotFoundComponent,
-    XcSpinnerComponent
+    PageNotFoundComponent
   ],
   providers: [
     HttpCacheService,

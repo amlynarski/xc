@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-xc-spinner',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./xc-spinner.component.sass']
 })
 export class XcSpinnerComponent implements OnInit {
+  @Input() show: boolean;
+  @Input() fullPage: boolean;
 
   constructor() { }
 

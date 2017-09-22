@@ -15,6 +15,7 @@ const ANIMATION_TIMEOUT = 10;
 export class GamesListComponent implements OnInit {
   games: Game[];
   emptyGames: Game[];
+  showSpinner: boolean;
 
   a = 'asdf';
 
@@ -39,6 +40,7 @@ export class GamesListComponent implements OnInit {
     this.gamesService.getGamesFromCategory(categoryName)
       .subscribe(
         (games) => {
+          this.showSpinner = false;
           this.games = [];
           this.setGames(games);
         }
@@ -57,7 +59,10 @@ export class GamesListComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(
-        param => this.getGames(param.get('name'))
+        (param) => {
+          this.showSpinner = true;
+          this.getGames(param.get('name'));
+        }
       );
   }
 

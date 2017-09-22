@@ -1,4 +1,5 @@
 <div class="categories-bar">
+  <app-xc-spinner [show]="!categories?.length"></app-xc-spinner>
   <div class="container categories-list">
     <app-category-item *ngFor="let category of categories"
                        [category]="category"

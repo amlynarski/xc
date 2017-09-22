@@ -1,4 +1,6 @@
-<div class="game-list" *ngIf="games?.length">
+<div class="game-list"
+     *ngIf="games?.length"
+     [ngClass]="showSpinner ? 'position-relative' : ''">
   <div class="game-box">
     <app-xc-search-field [value]="a"
                          [label]="'Search for'"
@@ -8,9 +10,11 @@
   <app-game-item *ngFor="let game of games"
                  [game]="game">
   </app-game-item>
+  <app-xc-spinner [show]="showSpinner" [fullPage]="true"></app-xc-spinner>
 </div>
-<div class="game-list" *ngIf="!games?.length">
+<div class="game-list position-relative" *ngIf="!games?.length">
   <app-game-item *ngFor="let game of emptyGames"
                  [game]="game">
   </app-game-item>
+  <app-xc-spinner [show]="showSpinner" [fullPage]="true"></app-xc-spinner>
 </div>

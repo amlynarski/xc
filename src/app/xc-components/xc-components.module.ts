@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { XcInputFieldComponent } from './xc-input-field/xc-input-field.component';
 import { XcSearchFieldComponent } from './xc-search-field/xc-search-field.component';
+import { XcSpinnerComponent } from './xc-spinner/xc-spinner.component';
 
 
 @NgModule({
@@ -14,11 +15,13 @@ import { XcSearchFieldComponent } from './xc-search-field/xc-search-field.compon
   ],
   declarations: [
     XcInputFieldComponent,
-    XcSearchFieldComponent
+    XcSearchFieldComponent,
+    XcSpinnerComponent
   ],
   exports: [
     XcInputFieldComponent,
-    XcSearchFieldComponent
+    XcSearchFieldComponent,
+    XcSpinnerComponent
   ],
   providers: []
 })
