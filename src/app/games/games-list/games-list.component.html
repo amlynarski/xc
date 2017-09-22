@@ -10,6 +10,7 @@
      *ngIf="games?.length"
      [ngClass]="showSpinner ? 'position-relative' : ''">
   <app-game-item *ngFor="let game of filteredGames"
+                 [isEmpty]="showSpinner"
                  [game]="game">
   </app-game-item>
   <app-xc-spinner [show]="showSpinner" [fullPage]="true"></app-xc-spinner>

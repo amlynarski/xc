@@ -11,14 +11,14 @@ const gamesRoutes: Routes = [
     component: CategoryListComponent,
     children: [
       {
+        path: 'games/:id',
+        component: GameComponent,
+      },
+      {
         path: ':name',
         component: GamesListComponent
       }
     ]
-  },
-  {
-    path: 'games/:id',
-    component: GameComponent,
   }
 ];
 

@@ -45,7 +45,7 @@ export class GameItemComponent implements OnInit {
   }
 
   playGame() {
-    this.router.navigate([`games/${this.game.id}`]);
+    this.router.navigate([`categories/games/${this.game.id}`]);
   }
 
   ngOnInit() {
