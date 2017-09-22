@@ -21,7 +21,6 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "gl-icons.css",
         "styles.sass"
       ],
       "scripts": [],

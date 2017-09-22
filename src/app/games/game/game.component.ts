@@ -7,7 +7,7 @@ import { Game } from '../shared/game.model';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.sass']
+  styleUrls: []
 })
 export class GameComponent implements OnInit {
   game: Game;

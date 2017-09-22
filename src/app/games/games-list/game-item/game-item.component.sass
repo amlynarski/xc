@@ -18,7 +18,7 @@
   &:hover
     box-shadow: 1px 1px 2px 0 rgb(116, 165, 194)
 
-  &:hover:after
+  &:hover:after // shine wow effect
     opacity: 1
     top: -30%
     left: -30%
@@ -26,7 +26,7 @@
     transition-duration: 0.7s, 0.7s, 0.15s
     transition-timing-function: ease
 
-  &:after
+  &:after // shine wow effect
     content: ""
     position: absolute
     top: -110%
@@ -38,7 +38,7 @@
     background: rgba(255, 255, 255, 0.13)
     background: linear-gradient(to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0.0) 100%  )
 
-  &:active:after
+  &:active:after // shine wow effect
     opacity: 0
     
   .game-name
@@ -50,8 +50,8 @@
     text-align: center
 
   .game-img
-    width: 150px
-    height: 140px
+    width: $game-img-width
+    height: $game-img-height
     border-radius: $radius-default
 
   .additional-game-info
