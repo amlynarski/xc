@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label class="xc-label-input" *ngIf="label" [for]="elementId">
+    {{label}}
+  </label>
+  <input [(ngModel)]="value"
+         [id]="elementId"
+         [placeholder]="placeholder"
+         class="form-control"
+         (ngModelChange)="update($event)"/>
+</div>
+

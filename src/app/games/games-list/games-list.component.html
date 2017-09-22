@@ -1,5 +1,16 @@
-<div class="game-list">
-  <app-game-item *ngFor="let game of games$ | async"
+<div class="game-list" *ngIf="games?.length">
+  <div class="game-box">
+    <app-xc-search-field [value]="a"
+                         [label]="'Search for'"
+                         (valueChange)="update($event)">
+    </app-xc-search-field>
+  </div>
+  <app-game-item *ngFor="let game of games"
+                 [game]="game">
+  </app-game-item>
+</div>
+<div class="game-list" *ngIf="!games?.length">
+  <app-game-item *ngFor="let game of emptyGames"
                  [game]="game">
   </app-game-item>
 </div>

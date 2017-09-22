@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { GamesService } from '../games.service';
 import { Game } from '../shared/game.model';
-import { Observable } from 'rxjs/Observable';
+
+const EMPTY_IMAGE_NAME_PATH = '/assets/img/cards-empty-img.gif';
+const ANIMATION_TIMEOUT = 10;
 
 @Component({
   selector: 'app-games-list',
@@ -11,16 +13,52 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./games-list.component.sass']
 })
 export class GamesListComponent implements OnInit {
-  games$: Observable<Game[]>;
+  games: Game[];
+  emptyGames: Game[];
 
-  constructor(
-    private gamesService: GamesService,
-    private route: ActivatedRoute
-  ) { }
+  a = 'asdf';
+
+  constructor(private gamesService: GamesService,
+              private route: ActivatedRoute) {
+    this.setEmptyGames();
+  }
+
+  setEmptyGames() {
+    this.emptyGames = (new Array(5)).fill({
+      name: 'Loading...',
+      thumbnail: EMPTY_IMAGE_NAME_PATH,
+      rating: 5
+    });
+  }
+
+  update(newValue: string) {
+    this.a = newValue;
+  }
+
+  getGames(categoryName: string) {
+    this.gamesService.getGamesFromCategory(categoryName)
+      .subscribe(
+        (games) => {
+          this.games = [];
+          this.setGames(games);
+        }
+      );
+  }
+
+  private setGames(games: Game[]) {
+    const gamesCopy = [...games];
+    const game = gamesCopy.shift();
+    this.games.push(game);
+    if (!!gamesCopy.length) {
+      setTimeout(() => this.setGames(gamesCopy), ANIMATION_TIMEOUT);
+    }
+  }
 
   ngOnInit() {
-    this.games$ = this.route.paramMap
-        .switchMap((params: ParamMap) => this.gamesService.getGamesFromCategory(params.get('name')) );
+    this.route.paramMap
+      .subscribe(
+        param => this.getGames(param.get('name'))
+      );
   }
 
 }

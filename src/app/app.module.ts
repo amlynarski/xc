@@ -10,6 +10,7 @@ import { CachingInterceptor } from './http/http-cache.interceptor';
 import { HeaderInterceptor } from './http/http-header.interceptor';
 
 import { AppComponent } from './app.component';
+import { XcComponentsModule } from './xc-components/xc-components.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NavigationService } from './navigation/navigation.service';
 import { NavigationModule } from './navigation/navigation.module';
@@ -18,11 +19,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { GamesService } from './games/games.service';
 import { GamesModule } from './games/games.module';
 import { HttpCacheService } from './http/http-cache.service';
+import { XcSpinnerComponent } from './xc-components/xc-spinner/xc-spinner.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    XcComponentsModule,
     BrowserAnimationsModule,
     NavigationModule,
     GamesModule,
@@ -31,8 +34,8 @@ import { HttpCacheService } from './http/http-cache.service';
   declarations: [
     AppComponent,
     MainPageComponent,
-    MainPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    XcSpinnerComponent
   ],
   providers: [
     HttpCacheService,
