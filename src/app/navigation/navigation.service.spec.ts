@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -6,6 +6,7 @@ import { NavigationService } from './navigation.service';
 
 
 describe('NavigationService', () => {
+  let service: NavigationService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, RouterTestingModule],
@@ -13,11 +14,30 @@ describe('NavigationService', () => {
     });
   });
 
-  it('should return proper icon class', inject([NavigationService], (service: NavigationService) => {
-    const iconName = 'someIcon.svg';
-    const iconWihoutSvg = 'someIcon';
-    const iconPrefix = 'gl-icon-';
-    const iconClass = service.getElementIconClass(iconName);
-    expect(iconClass).toBe(iconPrefix + iconWihoutSvg);
+  it('should open navigation and send value with stream', fakeAsync( () => {
+    service = TestBed.get(NavigationService);
+    let isOpen  = null;
+    service.isNavOpen()
+      .subscribe(
+        value => isOpen = value
+      );
+    service.open();
+    tick();
+    expect(isOpen).toBe(true);
   }));
+
+  it('should toggle navigation and send value with stream', fakeAsync( () => {
+    service = TestBed.get(NavigationService);
+    let isOpen  = null;
+    service.isNavOpen()
+      .subscribe(
+        value => isOpen = value
+      );
+    service.open();
+    tick();
+    service.toggleNav();
+    tick();
+    expect(isOpen).toBe(false);
+  }));
+
 });

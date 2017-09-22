@@ -11,7 +11,6 @@ export class GamesService {
   constructor(private http: HttpClient) { }
 
   getCategories() {
-
     return this.http
       .get(API_URL + CATEGORY_URL)
       .map((response: Response) => {
