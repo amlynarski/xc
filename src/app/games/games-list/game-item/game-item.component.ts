@@ -30,6 +30,7 @@ const SHOW_PLAY_TIME = 500;
 })
 export class GameItemComponent implements OnInit {
   @Input() game: Game;
+  @Input() isEmpty: boolean;
   showTimeout: any;
   showPlayButton: boolean;
 

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Category } from '../shared/category.model';
 import { GamesService } from '../games.service';
 
+const CATEGORY_URL = '/categories';
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -18,14 +20,23 @@ export class CategoryListComponent implements OnInit {
     this.getCategories();
   }
 
-  getCategories() { // todo implement some loader
+  getCategories() {
     this.gamesService.getCategories()
       .subscribe(
-        response => this.categories = response._embedded.game_categories
+        response => this.setCategories(response._embedded.game_categories)
       );
   }
 
   selectCategory(category: Category) {
     this.router.navigate([`categories/${category.slug}`]);
+  }
+
+  private setCategories(categories: Category[]) {
+    this.categories = categories;
+    if (this.router.routerState.snapshot.url === CATEGORY_URL && this.categories.length !== 0) {
+
+      // if we had static routes it would be located in routing file with redirect
+      this.selectCategory(this.categories[0]);
+    }
   }
 }

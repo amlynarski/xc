@@ -16,6 +16,7 @@
 </div>
 <div class="game-list position-relative" *ngIf="!games?.length">
   <app-game-item *ngFor="let game of emptyGames"
+                 [isEmpty]="true"
                  [game]="game">
   </app-game-item>
   <app-xc-spinner [show]="showSpinner" [fullPage]="true"></app-xc-spinner>
