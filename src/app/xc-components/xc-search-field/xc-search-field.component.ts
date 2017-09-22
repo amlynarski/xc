@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class XcSearchFieldComponent implements OnInit {
   @Input() value: string;
+  @Input() disabled: boolean;
   @Input() id: string;
   @Input() label: string;
   @Output() valueChange = new EventEmitter<string>();

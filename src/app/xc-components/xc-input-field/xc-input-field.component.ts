@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class XcInputFieldComponent implements OnInit {
   @Input() value: string;
+  @Input() disabled: boolean;
   @Input() id: string;
   @Input() label: string;
   @Input() placeholder: string;

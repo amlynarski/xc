@@ -14,14 +14,17 @@ const ANIMATION_TIMEOUT = 10;
 })
 export class GamesListComponent implements OnInit {
   games: Game[];
-  filteredGames: Game[];
   emptyGames: Game[];
   showSpinner: boolean;
-  searchText = ' ';
+  searchText = '';
 
   constructor(private gamesService: GamesService,
               private route: ActivatedRoute) {
     this.setEmptyGames();
+  }
+
+  get filteredGames(): Game[] {
+    return this.games.filter(({name}) => name.toLowerCase().includes(this.searchText));
   }
 
   setEmptyGames() {
@@ -33,7 +36,7 @@ export class GamesListComponent implements OnInit {
   }
 
   updateSearch(newValue: string) {
-    this.searchText = newValue;
+    this.searchText = newValue.toLowerCase();
   }
 
   getGames(categoryName: string) {
@@ -61,6 +64,7 @@ export class GamesListComponent implements OnInit {
       .subscribe(
         (param) => {
           this.showSpinner = true;
+          this.searchText = '';
           this.getGames(param.get('name'));
         }
       );

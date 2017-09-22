@@ -1,10 +1,15 @@
 @import '../../../variables'
 
-.form-control
+.xc-field
+  display: flex
+  align-items: center
+  justify-content: space-between
   border-radius: 2px // todo var
+
+  .xc-label-input
+    padding-right: $space-sm
+    text-transform: uppercase
 
 .form-control:focus
   border-color: $dark-gray
 
-.xc-label-input
-  text-transform: uppercase

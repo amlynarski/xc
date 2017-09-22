@@ -1,13 +1,15 @@
+<div class="games-search">
+  <app-xc-search-field [value]="searchText"
+                       [label]="'Search'"
+                       [disabled]="showSpinner"
+                       (valueChange)="updateSearch($event)">
+  </app-xc-search-field>
+</div>
+
 <div class="game-list"
      *ngIf="games?.length"
      [ngClass]="showSpinner ? 'position-relative' : ''">
-  <div class="game-box">
-    <app-xc-search-field [value]="searchText"
-                         [label]="'Search'"
-                         (valueChange)="updateSearch($event)">
-    </app-xc-search-field>
-  </div>
-  <app-game-item *ngFor="let game of games"
+  <app-game-item *ngFor="let game of filteredGames"
                  [game]="game">
   </app-game-item>
   <app-xc-spinner [show]="showSpinner" [fullPage]="true"></app-xc-spinner>
