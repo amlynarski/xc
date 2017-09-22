@@ -15,6 +15,7 @@ const SHOW_PLAY_TIME = 500;
 export class GameItemComponent implements OnInit {
   @Input() game: Game;
   @Input() isEmpty: boolean;
+  imgVisible: boolean;
   showTimeout: any;
   showPlayButton: boolean;
 
@@ -46,6 +47,10 @@ export class GameItemComponent implements OnInit {
 
   playGame() {
     this.router.navigate([`categories/games/${this.game.id}`]);
+  }
+
+  imgLoaded() {
+    this.imgVisible = true;
   }
 
   ngOnInit() {

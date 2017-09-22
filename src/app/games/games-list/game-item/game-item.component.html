@@ -6,7 +6,17 @@
      [@flyInOut]="'in'">
   <div class="game-name" *ngIf="!isEmpty">{{game.name}}</div>
   <app-xc-spinner [show]="isEmpty"></app-xc-spinner>
-  <img class="game-img" [src]="game.thumbnail"  />
+  <img class="game-img"
+       [src]="game.thumbnail"
+       [ngClass]="!imgVisible ? 'hidden-img' : ''"
+       (error)="imgLoaded()"
+       (load)="imgLoaded()"  />
+  <app-xc-spinner
+      *ngIf="!imgVisible"
+      class="game-img"
+      [fullPage]="true"
+      [show]="!imgVisible">
+  </app-xc-spinner>
   <div class="additional-game-info">
     <div class="vertical-middle">
       <i class="glyphicon glyphicon-star-empty"></i>
