@@ -2,9 +2,9 @@
      *ngIf="games?.length"
      [ngClass]="showSpinner ? 'position-relative' : ''">
   <div class="game-box">
-    <app-xc-search-field [value]="a"
-                         [label]="'Search for'"
-                         (valueChange)="update($event)">
+    <app-xc-search-field [value]="searchText"
+                         [label]="'Search'"
+                         (valueChange)="updateSearch($event)">
     </app-xc-search-field>
   </div>
   <app-game-item *ngFor="let game of games"

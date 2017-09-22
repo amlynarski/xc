@@ -4,7 +4,7 @@
   </label>
   <input [(ngModel)]="value"
          [id]="elementId"
-         [placeholder]="placeholder"
+         [placeholder]="placeholder ? placeholder : ''"
          class="form-control"
          (ngModelChange)="update($event)"/>
 </div>

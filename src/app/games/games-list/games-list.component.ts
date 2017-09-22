@@ -14,10 +14,10 @@ const ANIMATION_TIMEOUT = 10;
 })
 export class GamesListComponent implements OnInit {
   games: Game[];
+  filteredGames: Game[];
   emptyGames: Game[];
   showSpinner: boolean;
-
-  a = 'asdf';
+  searchText = ' ';
 
   constructor(private gamesService: GamesService,
               private route: ActivatedRoute) {
@@ -32,8 +32,8 @@ export class GamesListComponent implements OnInit {
     });
   }
 
-  update(newValue: string) {
-    this.a = newValue;
+  updateSearch(newValue: string) {
+    this.searchText = newValue;
   }
 
   getGames(categoryName: string) {
