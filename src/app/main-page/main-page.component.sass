@@ -2,5 +2,16 @@
 
 .main-page
   display: grid
-  grid-template-rows: $top-nav-height auto
-  height: 100%
+  grid-template-rows: $top-nav-height auto 1fr auto
+  min-height: 100vh
+
+  .xc-footer
+    width: 100%
+    grid-row-start: 5
+    grid-row-end: 6
+    background-color: $dark-gray
+    color: white
+    display: flex
+    flex-direction: row
+    justify-content: center
+    padding: 10px
