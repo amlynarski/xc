@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GamesService } from './games/games.service';
 import { GamesModule } from './games/games.module';
 import { HttpCacheService } from './http/http-cache.service';
+import { GameComponent } from './games/game/game.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { HttpCacheService } from './http/http-cache.service';
   declarations: [
     AppComponent,
     MainPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GameComponent
   ],
   providers: [
     HttpCacheService,

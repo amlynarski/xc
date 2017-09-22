@@ -1,6 +1,7 @@
 <div class="game-box"
      (mouseenter)="onMouseEnter()"
      (mouseleave)="onMouseLeave()"
+     (click)="playGame()"
      [@rotatedState]="showPlayButton ? 'rotated' : 'default'"
      [@flyInOut]="'in'">
   <div class="game-name" *ngIf="!isEmpty">{{game.name}}</div>

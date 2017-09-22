@@ -1,4 +1,5 @@
 export class Game {
+  id: string;
   description?: string;
   enabled?: boolean;
   name: string;

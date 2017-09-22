@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Game } from '../../shared/game.model';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animations } from './game-item.animations';
 
 const SHOW_PLAY_TIME = 500;
 
@@ -9,24 +10,7 @@ const SHOW_PLAY_TIME = 500;
   selector: 'app-game-item',
   templateUrl: './game-item.component.html',
   styleUrls: ['./game-item.component.sass'],
-  animations: [
-    trigger('flyInOut', [
-      state('in', style({opacity: '1'})),
-      transition(':enter', [
-        style({opacity: '0'}),
-        animate(300)
-      ]),
-      transition(':leave', [
-        animate(300, style({transform: 'translateX(100%)'}))
-      ])
-    ]),
-    trigger('rotatedState', [
-      state('default', style({ transform: 'rotate(0)' })),
-      state('rotated', style({ transform: 'rotate(-360deg)' })),
-      transition('rotated => default', animate('400ms ease-out')),
-      transition('default => rotated', animate('400ms ease-in'))
-    ])
-  ]
+  animations: animations
 })
 export class GameItemComponent implements OnInit {
   @Input() game: Game;
@@ -34,7 +18,7 @@ export class GameItemComponent implements OnInit {
   showTimeout: any;
   showPlayButton: boolean;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   onMouseEnter() {
     this.showTimeout = setTimeout(
@@ -58,6 +42,10 @@ export class GameItemComponent implements OnInit {
 
   hidePlay() {
     this.showPlayButton = false;
+  }
+
+  playGame() {
+    this.router.navigate([`games/${this.game.id}`]);
   }
 
   ngOnInit() {

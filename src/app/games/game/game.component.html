@@ -1,0 +1,11 @@
+<app-xc-spinner
+    *ngIf="showSpinner"
+    [show]="showSpinner"
+    [fullPage]="true">
+</app-xc-spinner>
+<div *ngIf="game" class="container">
+  <h1>{{game.name}}</h1>
+  Here should be your game.
+</div>
+<app-page-not-found *ngIf="gameNotFound">
+</app-page-not-found>

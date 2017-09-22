@@ -41,9 +41,9 @@ export class GamesListComponent implements OnInit {
 
   getGames(categoryName: string) {
     this.gamesService.getGamesFromCategory(categoryName)
+      .finally(() => this.showSpinner = false)
       .subscribe(
         (games) => {
-          this.showSpinner = false;
           this.games = [];
           this.setGames(games);
         }

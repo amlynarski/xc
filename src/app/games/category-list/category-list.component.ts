@@ -13,15 +13,18 @@ const CATEGORY_URL = '/categories';
 })
 export class CategoryListComponent implements OnInit {
   categories: Category[];
+  showSpinner: boolean;
 
   constructor(private gamesService: GamesService, private router: Router) { }
 
   ngOnInit() {
+    this.showSpinner = true;
     this.getCategories();
   }
 
   getCategories() {
     this.gamesService.getCategories()
+      .finally(() => this.showSpinner = false)
       .subscribe(
         response => this.setCategories(response._embedded.game_categories)
       );

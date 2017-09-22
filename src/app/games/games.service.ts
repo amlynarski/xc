@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { API_URL, CATEGORY_URL } from './games.consts';
+import { API_URL, CATEGORY_URL, GAME_URL } from './games.consts';
 import { Category } from './shared/category.model';
 
 @Injectable()
@@ -11,8 +11,6 @@ export class GamesService {
   constructor(private http: HttpClient) { }
 
   getCategories() {
-    // this.getsth()
-    //   .subscribe()
 
     return this.http
       .get(API_URL + CATEGORY_URL)
@@ -31,13 +29,16 @@ export class GamesService {
       .catch(this.handleError);
   }
 
-  // getsth() {
-  //   return this.http
-  //     // .get('//staging-static.cherrycasino.com/media/game/desktop/lobby/150x140-starburst-new2.jpg?u=1487951589')
-  //     .get("//staging-static.cherrycasino.com/img/games/gamebg/starburst-1385396764.jpg?u=1487951589")
-  //     .map(response => response)
-  //
-  // }
+  getGame(gameId: string) {
+    // to be honest it is unnecessary to get everything with separated methods because our 'getCategories' contains
+    // everything, but I'm implementing in the way it should look like in real app (you don't get full database in
+    // one shot :)
+    return this.http
+      .get(`${API_URL + GAME_URL}/${gameId}`)
+      .map(response => response)
+      .catch(this.handleError);
+
+  }
 
   private handleError(error: Response) {
     console.log(error);
