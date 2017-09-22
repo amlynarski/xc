@@ -1,4 +1,8 @@
-<div class="game-box" [@flyInOut]="'in'">
+<div class="game-box"
+     (mouseenter)="onMouseEnter()"
+     (mouseleave)="onMouseLeave()"
+     [@rotatedState]="showPlayButton ? 'rotated' : 'default'"
+     [@flyInOut]="'in'">
   <div class="game-name">{{game.name}}</div>
   <img class="game-img" [src]="game.thumbnail"  />
   <div class="additional-game-info">
@@ -6,5 +10,8 @@
       <i class="glyphicon glyphicon-star-empty"></i>
       <span class="game-rating">{{game.rating}}</span>
     </div>
+  </div>
+  <div class="show-play" *ngIf="showPlayButton">
+    <i class="glyphicon glyphicon-play-circle"></i>
   </div>
 </div>
