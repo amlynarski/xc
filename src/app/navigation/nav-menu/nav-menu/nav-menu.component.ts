@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MenuItem } from '../../shared/menu-item.model';
 import { NavigationService } from '../../navigation.service';
+import { GamesService } from '../../../games/games.service';
 import animations from '../navigation.animations';
+import { Category } from '../../../games/shared/category.model';
+
 
 @Component({
   selector: 'app-nav-menu-left',
@@ -11,32 +13,26 @@ import animations from '../navigation.animations';
   animations: animations
 })
 export class NavMenuComponent implements OnInit {
-  menuItems: MenuItem[];
-  selectedElement: MenuItem | null = null;
+  categories: Category[];
+  showSpinner = false;
 
-  constructor(private navigationService: NavigationService) { }
+  constructor(private navigationService: NavigationService,
+              private gamesService: GamesService) { }
 
   ngOnInit() {
-    this.getMenuItems();
-    this.selectedElement = this.navigationService.getSelectedElement();
-    this.navigationService.selectedElementChange()
+    this.showSpinner = true;
+    this.getCategories();
+  }
+
+  onElementSelect(category: Category) {
+    this.navigationService.navigateTo(`/categories/${category.slug}`);
+  }
+
+  private getCategories() {
+    this.gamesService.getCategories()
+      .finally(() => this.showSpinner = false)
       .subscribe(
-        selectedElement => this.selectedElement = selectedElement
-      );
-  }
-
-  onElementSelect(element: MenuItem) {
-    this.navigationService.selectElement(element);
-  }
-
-  closeNav() {
-    this.navigationService.close();
-  }
-
-  private getMenuItems() {
-    this.navigationService.getNavigationElements()
-      .subscribe(
-        response => this.menuItems = response.menu
+        response => this.categories = response._embedded.game_categories
       );
   }
 

@@ -2,21 +2,11 @@
 
 .left-menu-item
   display: flex
-  justify-content: space-between
-  font-size: $font-size-sm
-  margin-bottom: $space-sm
-  padding: $space-xs $space-sm $space-xs
+  justify-content: center
+  text-transform: uppercase
+  border-bottom: 1px solid
+  padding: 20px
   cursor: pointer
 
-  &:hover, &.selected
+  &:hover
     background-color: $dirty-white
-
-  [class^="gl-icon-"], [class*=" gl-icon-"]
-    font-size: $font-size-lg
-    width: $icon-width
-    text-align: center
-    margin-right: $space-sm
-
-  .glyphicon
-    font-size: $font-size-xs
-    color: $gray

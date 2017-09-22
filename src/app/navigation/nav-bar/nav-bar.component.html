@@ -1,17 +1,12 @@
 <div class="nav-bar">
-  <div class="container hidden-xs">
-    <nav class="nav-items">
-      <i class="glyphicon glyphicon-menu-hamburger nav-item"
-         (click)="toggleNavMenu()"></i>
-      <div *ngFor="let item of menuItems"
-           (click)="openNavigationElement(item)"
-           class="nav-item">
-        {{item.name}}
-      </div>
-    </nav>
-  </div>
-  <nav class="nav-items visible-xs">
-    <i class="glyphicon glyphicon-menu-hamburger nav-item"
+  <nav>
+    <i class="glyphicon glyphicon-menu-hamburger nav-menu visible-xs"
        (click)="toggleNavMenu()"></i>
   </nav>
+  <div class="xc-header-title">
+    <div class="vertical-middle">
+      <i class="glyphicon glyphicon-king"></i>
+      <div>Adam Casino</div>
+    </div>
+  </div>
 </div>
